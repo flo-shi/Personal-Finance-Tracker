@@ -1,4 +1,5 @@
 import streamlit as st
+import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 
@@ -8,6 +9,8 @@ with open("linear_regression_model.pkl", "rb") as f:
 
 coefficients = model_parameters["coefficients"]
 intercept = model_parameters["intercept"]
+x = model_parameters["x"]
+y = model_parameters["y"]
 
 # --- webpage name ---
 st.set_page_config(page_title="Linear Regression", page_icon="", layout="wide")
@@ -27,3 +30,14 @@ with st.container():
     with column_1:
         st.write("##")
         st.subheader("Plot of expenditure over the last few months.")
+    with column_2:
+
+        def plot():
+            plt.plot(x, y)
+            plt.title("Month against expenditure")
+            plt.ylabel("Expenditure")
+            plt.xlabel("months")
+            return plt.show()
+
+        plot = plot()
+        st.pyplot(plot)
