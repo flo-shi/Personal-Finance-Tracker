@@ -25,19 +25,32 @@ st.write(
 )
 
 st.write("---")
+
+# ------- first section, making a plot ------
 column_1, column_2 = st.columns((1, 2))
 with st.container():
     with column_1:
+        st.write("##")
+        st.write("##")
+        st.write("##")
+        st.write("##")
+        st.write("##")
         st.write("##")
         st.subheader("Plot of expenditure over the last few months.")
     with column_2:
 
         def plot():
-            plt.plot(x, y)
-            plt.title("Month against expenditure")
-            plt.ylabel("Expenditure")
-            plt.xlabel("months")
-            return plt.show()
+            (
+                fig,
+                ax,
+            ) = (
+                plt.subplots()
+            )  # working with matpotlib in a way that is compatible with sreamlit
+            ax.plot(x, y)
+            ax.set_title("Month against expenditure")
+            ax.set_ylabel("Expenditure")
+            ax.set_xlabel("Months")
+            return fig
 
-        plot = plot()
-        st.pyplot(plot)
+        fig = plot()
+        st.pyplot(fig)
