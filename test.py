@@ -11,6 +11,7 @@ coefficients = model_parameters["coefficients"]
 intercept = model_parameters["intercept"]
 x = model_parameters["x"]
 y = model_parameters["y"]
+pred_y = model_parameters["pred_y"]
 
 # --- webpage name ---
 st.set_page_config(page_title="Linear Regression", page_icon="", layout="wide")
@@ -53,4 +54,29 @@ with st.container():
             return fig
 
         fig = plot()
+        st.pyplot(fig)
+
+# ---- second section ----- plot of linear regression
+st.write("---")
+column_3, column_4 = st.columns((1, 2))
+with st.container():
+    with column_3:
+        st.write("##")
+        st.write("##")
+        st.write("##")
+        st.write("##")
+        st.write("##")
+        st.write("##")
+        st.subheader("Plot of linear regression.")
+    with column_4:
+
+        def linReg():
+            fig, ax = plt.subplots()
+            ax.plot(x, pred_y)
+            ax.set_title("Month against predicted expenditure")
+            ax.set_xlabel("Months")
+            ax.set_ylabel("Predicted expenditure")
+            return fig
+
+        fig = linReg()
         st.pyplot(fig)
