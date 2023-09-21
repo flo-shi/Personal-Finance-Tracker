@@ -92,5 +92,20 @@ with st.container():
         "Using the above model we will predict the expenditure for the remaining months of the year by collecting user input"
     )
 
+user_input, pred = st.columns(2)
 # collecting user input
-months = st.number_input("Enter a number of any month", min_value=1, max_value=12)
+with user_input:
+    months = st.number_input("Enter a number of any month", min_value=1, max_value=12)
+
+# perform manual prediction
+with st.container():
+
+    def man_pred(months):
+        return coefficients * months + intercept
+
+    estimate = int(man_pred(months))
+
+# display results
+with pred:
+    st.write("The estimated monthly expenditure for this month is:")
+    st.write(estimate)
