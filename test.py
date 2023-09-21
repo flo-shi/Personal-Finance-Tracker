@@ -37,7 +37,7 @@ with st.container():
         st.write("##")
         st.write("##")
         st.write("##")
-        st.subheader("Plot of expenditure over the last few months.")
+        st.subheader("Plot of expenditure over the first few months of the year.")
     with column_2:
 
         def plot():
@@ -67,7 +67,7 @@ with st.container():
         st.write("##")
         st.write("##")
         st.write("##")
-        st.subheader("Plot of linear regression.")
+        st.subheader("Plot of linear regression of the libe graph above.")
     with column_4:
 
         def linReg():
@@ -80,3 +80,17 @@ with st.container():
 
         fig = linReg()
         st.pyplot(fig)
+
+# ---- third section ------ collecting user inputs
+st.write("---")
+with st.container():
+    st.write("##")
+    st.subheader(
+        "Estimation of predicted expenditure for the remaining months of the year"
+    )
+    st.write(
+        "Using the above model we will predict the expenditure for the remaining months of the year by collecting user input"
+    )
+
+# collecting user input
+months = st.number_input("Enter a number of any month", min_value=1, max_value=12)
